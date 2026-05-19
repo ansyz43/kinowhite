@@ -1124,8 +1124,16 @@ body.nav-open { overflow: hidden; }
   .hero-text-col { padding-left: 18px; padding-right: 18px; }
   .hero-text-col .hero-title { font-size: clamp(36px, 11vw, 64px) !important; margin-bottom: 20px; }
   /* Карусели на мобиле — быстрее */
-  .partners-track { animation-duration: 22s !important; }
+  .partners-track { animation-duration: 22s !important; gap: 32px !important; }
   .photo-marquee-track { animation-duration: 30s !important; }
+  /* Партнёры на мобиле — компактнее, чтобы помещалось несколько одновременно */
+  .partners-track .partner-item { padding: 0 4px !important; gap: 4px !important; }
+  .partners-track .partner-abbr { font-size: 20px !important; }
+  .partners-track .partner-logo-img { height: 32px !important; max-width: 90px !important; }
+  .partners-track .partner-name { font-size: 9px !important; letter-spacing: 0.04em !important; max-width: 110px !important; white-space: normal !important; line-height: 1.15 !important; }
+  .partners-marquee::before, .partners-marquee::after { width: 40px !important; }
+  .partners-marquee .strip-head { padding: 0 18px !important; }
+  .partners-marquee .strip-head h2 { font-size: 22px !important; }
   .section-title { font-size: clamp(30px, 7vw, 44px); }
   .hero-sub { font-size: 18px; }
   .nav-wordmark .bot { font-size: 19px; }
