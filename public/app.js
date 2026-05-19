@@ -1,5 +1,32 @@
 // Общая логика сайта: мобильное меню, модалка контакта, отправка /api/lead, простые горизонтальные ленты.
 
+// CRITICAL — мобильный hamburger toggle. Привязываем ПЕРВЫМ, чтобы он отработал
+// даже если последующие IIFE'ы выкинут ошибку. Используем event delegation на
+// document — работает даже если кнопка добавлена позже или подменена.
+(function () {
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('[data-nav-toggle]');
+    if (!t) return;
+    const menu = document.querySelector('[data-nav-menu]');
+    if (!menu) return;
+    const open = menu.classList.toggle('open');
+    document.body.classList.toggle('nav-open', open);
+    t.setAttribute('aria-expanded', String(open));
+  });
+  // клик по ссылке внутри открытого меню — закрываем меню
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('[data-nav-menu] a');
+    if (!link) return;
+    const menu = document.querySelector('[data-nav-menu]');
+    const toggle = document.querySelector('[data-nav-toggle]');
+    if (menu && menu.classList.contains('open')) {
+      menu.classList.remove('open');
+      document.body.classList.remove('nav-open');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+
 // Mega-menu с hover-intent — 350ms grace, чтобы курсор не закрывал панель моментально
 (function () {
   const items = document.querySelectorAll('.nav-links > li.has-mega');
@@ -297,17 +324,7 @@
   nums.forEach((el) => io.observe(el));
 })();
 
-(function () {
-  const toggle = document.querySelector('[data-nav-toggle]');
-  const menu = document.querySelector('[data-nav-menu]');
-  if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      const open = menu.classList.toggle('open');
-      document.body.classList.toggle('nav-open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-  }
-})();
+// (старый toggle-handler перенесён в начало файла с event-delegation)
 
 // Sticky nav — прячется при скролле вниз, появляется при скролле вверх и на hover
 (function () {

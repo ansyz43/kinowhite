@@ -247,6 +247,9 @@ body { padding-top: 84px; }
 @media (max-width: 1100px) {
   .nav-mega { display: none !important; }
   .nav-links > li.has-mega > a > .caret { display: none; }
+  /* CRITICAL: на мобиле bridge ::before (для desktop hover-intent)
+     перекрывает клики по соседним пунктам меню → отключаем */
+  .nav-links > li.has-mega > a::before { display: none !important; }
 }
 .nav-cta {
   font-family: var(--font-sans); font-size: 14px; font-weight: 600;
