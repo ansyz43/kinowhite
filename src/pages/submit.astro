@@ -1,0 +1,129 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { MultiStepForm } from "../components/ui/multistep-form";
+---
+<Layout title={`Подать заявку · Дальневосточная Кинопремия 2026`} active={"submit"}>
+
+<section class="page-hero v2">
+  <div class="page-hero-eyebrow"><span class="dot"></span><span>Подача заявки</span></div>
+  <h1 class="page-hero-title" data-text-reveal>Участие в&nbsp;<em>конкурсе</em> 2026</h1>
+  <p class="page-hero-lead">Приём заявок откроется в&nbsp;апреле. Точные технические детали будут опубликованы после утверждения оргкомитетом. Сейчас можно оставить контакт и&nbsp;получить уведомление о&nbsp;старте.</p>
+</section>
+
+<!-- Multi-step заявка — компонент из 21st-dev (Multistep Form) -->
+<section class="submit-multistep" style="display:flex;justify-content:center;padding:64px 24px 32px;background:var(--bg);border-top:1px solid var(--border);">
+  <MultiStepForm client:load />
+</section>
+
+
+<!-- Старая самописная форма скрыта на случай отката -->
+<section style="display:none">
+  <form class="msf" data-multistep novalidate onsubmit="return false">
+    <div class="msf-progress">
+      <div class="msf-bar" data-msf-bar style="--p:33%"></div>
+      <ol class="msf-steps">
+        <li class="active" data-step-label="1"><span>01</span>О фильме</li>
+        <li data-step-label="2"><span>02</span>Контакты</li>
+        <li data-step-label="3"><span>03</span>Материалы</li>
+      </ol>
+    </div>
+
+    <fieldset class="msf-fieldset" data-step="1">
+      <legend>О фильме</legend>
+      <label>
+        <span>Название фильма</span>
+        <input name="film_title" type="text" placeholder="Например: «Сто лет тому вперёд»" />
+      </label>
+      <label>
+        <span>Год выпуска</span>
+        <input name="film_year" type="number" min="2020" max="2026" placeholder="2025" />
+      </label>
+      <label>
+        <span>Жанр / формат</span>
+        <select name="film_format">
+          <option>Игровой полный метр</option>
+          <option>Неигровой полный метр</option>
+          <option>Анимационный полный метр</option>
+          <option>Сериал</option>
+          <option>Короткометражный</option>
+        </select>
+      </label>
+      <label>
+        <span>Регион съёмок</span>
+        <input name="film_region" type="text" placeholder="Якутия, Приморье, Камчатка..." />
+      </label>
+    </fieldset>
+
+    <fieldset class="msf-fieldset" data-step="2" hidden>
+      <legend>Контактное лицо</legend>
+      <label>
+        <span>Имя и&nbsp;фамилия</span>
+        <input name="contact_name" type="text" placeholder="Иван Иванов" autocomplete="name" />
+      </label>
+      <label>
+        <span>Роль в&nbsp;проекте</span>
+        <select name="contact_role">
+          <option>Продюсер</option>
+          <option>Режиссёр</option>
+          <option>Сценарист</option>
+          <option>Дистрибьютор</option>
+          <option>Правообладатель</option>
+        </select>
+      </label>
+      <label>
+        <span>Телефон</span>
+        <input name="contact_phone" type="tel" placeholder="+7 ___ ___-__-__" autocomplete="tel" />
+      </label>
+      <label>
+        <span>E-mail</span>
+        <input name="contact_email" type="email" placeholder="you@studio.ru" autocomplete="email" />
+      </label>
+    </fieldset>
+
+    <fieldset class="msf-fieldset" data-step="3" hidden>
+      <legend>Материалы</legend>
+      <label>
+        <span>Ссылка на&nbsp;трейлер / онлайн-версию</span>
+        <input name="film_link" type="url" placeholder="https://vimeo.com/..." />
+      </label>
+
+      <div class="dropzone" data-dropzone tabindex="0">
+        <div class="dropzone-icon">↓</div>
+        <div class="dropzone-text">
+          <strong>Перетащите постер и&nbsp;афишу</strong> сюда или&nbsp;нажмите, чтобы выбрать файлы
+        </div>
+        <div class="dropzone-hint">JPG · PNG · PDF до&nbsp;20&nbsp;МБ</div>
+        <input type="file" multiple accept="image/*,application/pdf" hidden data-dropzone-input />
+        <ul class="dropzone-files" data-dropzone-files></ul>
+      </div>
+
+      <label class="msf-consent">
+        <input type="checkbox" name="consent" />
+        <span>Согласен на&nbsp;обработку персональных данных согласно <a href="/privacy">политике конфиденциальности</a>.</span>
+      </label>
+    </fieldset>
+
+    <div class="msf-nav">
+      <button type="button" class="btn-ghost" data-msf-prev disabled>← Назад</button>
+      <div class="msf-status" data-msf-status></div>
+      <button type="button" class="btn-primary" data-msf-next>Далее →</button>
+    </div>
+  </form>
+</section>
+
+<!-- Прямая подача через почту -->
+<section class="submit-alt">
+  <header>
+    <div class="page-hero-eyebrow"><span class="dot"></span><span>Прямая подача</span></div>
+    <h2>Связаться с&nbsp;оргкомитетом</h2>
+  </header>
+  <div class="submit-alt-grid single">
+    <article class="submit-alt-card">
+      <h3>Подать заявку через почту</h3>
+      <p>Если у&nbsp;вас уже есть готовые материалы (трейлер, постер, описание) — напишите напрямую оргкомитету. Мы&nbsp;ответим в&nbsp;течение 2–3&nbsp;рабочих дней с&nbsp;инструкциями по&nbsp;следующим шагам.</p>
+      <a class="link-button" href="mailto:ptichka595@mail.ru?subject=ДВ%20Кинопремия%20—%20заявка">Написать на&nbsp;ptichka595@mail.ru →</a>
+    </article>
+  </div>
+</section>
+
+</Layout>

@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const members = [
+  { num: "01", name: "Председатель оргкомитета", role: "Минвостокразвития", note: "Объявляется оргкомитетом" },
+  { num: "02", name: "Заместитель председателя", role: "КРДВ", note: "Объявляется оргкомитетом" },
+  { num: "03", name: "Программный директор", role: "ООО «Сердце Русского»", note: "Объявляется оргкомитетом" },
+  { num: "04", name: "Куратор деловой программы", role: "Хабаровск 2026", note: "Объявляется оргкомитетом" },
+];
+---
+<Layout title={`Оргкомитет · Дальневосточная Кинопремия 2026`} active={"orgcommittee"}>
+
+<section class="page-hero v2">
+  <div class="page-hero-eyebrow"><span class="dot"></span><span>Оргкомитет</span></div>
+  <h1 class="page-hero-title" data-text-reveal>Кто <em>организует</em> премию</h1>
+  <p class="page-hero-lead">Состав оргкомитета III сезона будет опубликован после официального утверждения. Здесь — структура и&nbsp;ключевые роли.</p>
+</section>
+
+<section class="people-list reveal-stagger">
+  {members.map((m) => (
+    <article class="people-row">
+      <div class="people-row-num">{m.num}</div>
+      <div class="people-row-body">
+        <div class="people-row-role">{m.role}</div>
+        <h3 class="people-row-name">{m.name}</h3>
+        <div class="people-row-note">{m.note}</div>
+      </div>
+      <div class="people-row-tag">Roster 2026</div>
+    </article>
+  ))}
+</section>
+
+</Layout>

@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const partners = [
+  { abbr: "МВР",  logo: null,                              name: "Министерство Российской Федерации по&nbsp;развитию Дальнего Востока и&nbsp;Арктики", role: "Учредитель" },
+  { abbr: "КРДВ", logo: "/assets/partners/krdv.png",       name: "Корпорация развития Дальнего Востока и&nbsp;Арктики", role: "Учредитель" },
+  { abbr: "ФК",   logo: null,                              name: "Фонд кино", role: "Партнёр" },
+  { abbr: "ФРСИ", logo: null,                              name: "Фонд развития социальных инициатив", role: "Партнёр" },
+  { abbr: "СР",   logo: "/assets/partners/serdce-russkogo.png", name: "ООО «Сердце Русского»", role: "Оператор" },
+  { abbr: "МК",   logo: null,                              name: "Министерство культуры Российской Федерации", role: "При поддержке" },
+  { abbr: "ДФО",  logo: null,                              name: "Дальневосточный федеральный округ", role: "Регион" },
+];
+---
+<Layout title={`Партнёры · Дальневосточная Кинопремия 2026`} active={"partners"}>
+
+<section class="page-hero v2">
+  <div class="page-hero-eyebrow"><span class="dot"></span><span>Партнёры и учредители</span></div>
+  <h1 class="page-hero-title" data-text-reveal>Вместе <em>делаем</em> кино</h1>
+  <p class="page-hero-lead">Премия существует благодаря государственным институтам, фондам и&nbsp;индустриальным партнёрам, поддерживающим кинематограф Дальнего Востока.</p>
+</section>
+
+<section class="partners-list reveal-stagger">
+  {partners.map((p, i) => (
+    <article class="partner-row">
+      {p.logo
+        ? <img class="partner-row-logo" src={p.logo} alt={p.abbr} />
+        : <div class="partner-row-abbr">{p.abbr}</div>
+      }
+      <div class="partner-row-body">
+        <h3 class="partner-row-name" set:html={p.name}></h3>
+        <div class="partner-row-meta">{String(i + 1).padStart(2, "0")} · {p.role}</div>
+      </div>
+      <div class="partner-row-tag">{p.role}</div>
+    </article>
+  ))}
+</section>
+
+</Layout>

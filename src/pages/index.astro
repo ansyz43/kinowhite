@@ -1,0 +1,218 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PhotoMarquee from "../components/PhotoMarquee.tsx";
+---
+<Layout title="Главная · Дальневосточная Кинопремия 2026" active="home">
+
+<section class="hero home-hero">
+  <div class="hero-content">
+    <div class="hero-text-col">
+      <div class="hero-eyebrow"><span>Хабаровск · 25 сентября 2026 · III церемония</span></div>
+      <h1 class="hero-title">
+        Дальневосточная<br />
+        <span class="accent">кинопремия</span>
+      </h1>
+      <p class="hero-sub">Профессиональная награда для тех, кто снимает кино на&nbsp;Дальнем Востоке и&nbsp;о&nbsp;Дальнем Востоке.</p>
+      <div class="hero-actions">
+        <a href="/submit" class="btn-primary">Подать заявку →</a>
+        <a href="/archive" class="btn-ghost">Архив победителей</a>
+      </div>
+      <dl class="hero-meta-row">
+        <div><dt>Сезон</dt><dd>III — 2026</dd></div>
+        <div><dt>Площадка</dt><dd>ГДК · Хабаровск</dd></div>
+        <div><dt>Дедлайн</dt><dd>Подача — апрель</dd></div>
+      </dl>
+    </div>
+    <div class="hero-hero-img" aria-hidden="true">
+      <img src="/assets/hero/khabarovsk.jpg" alt="Площадь Славы, Хабаровск" />
+      <div class="hero-img-cap">
+        <span class="hero-img-tag">Площадка</span>
+        <span class="hero-img-place">Хабаровск · Площадь Славы</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="gold-line" />
+
+<!-- Лого ДВК — крупный лаконичный mark между hero и stats -->
+<section class="logo-feature">
+  <img src="/assets/logo/logo-1.png" alt="Дальневосточная Кинопремия" class="logo-feature-img" />
+</section>
+
+<section class="stats-strip">
+  <div class="stats-strip-inner">
+    <div class="stats-tag">Приём заявок · 2026</div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num" data-count="3">0</div><div class="stat-label">сезон премии</div></div>
+      <div class="stat-item"><div class="stat-num" data-count="7">0</div><div class="stat-label">номинаций — включая «Арктику»</div></div>
+      <div class="stat-item"><div class="stat-num" data-count="2026">0</div><div class="stat-label">Хабаровск · церемония</div></div>
+    </div>
+  </div>
+  <div class="hero-aside-meta">
+    <span>Первый рассвет России</span><strong>ДФО</strong>
+  </div>
+</section>
+
+<section class="feat-news reveal" aria-label="Главная новость">
+  <div class="feat-news-inner">
+    <div class="feat-news-body">
+      <div class="feat-news-tag">News · 18 мая 2026</div>
+      <h2 class="feat-news-title">III Дальневосточная Кинопремия пройдёт <em>в&nbsp;Хабаровске</em></h2>
+      <p class="feat-news-lead">Главная сцена премии 2026 года переезжает в&nbsp;столицу ДФО. До&nbsp;церемонии в&nbsp;городе пройдёт расширенная программа: мастер-классы российских кинематографистов, деловая часть для продюсеров и&nbsp;дистрибьюторов, локейшен-тур по&nbsp;Хабаровску и&nbsp;его окрестностям. В&nbsp;сезоне-2026 сохраняются все шесть прошлогодних номинаций — и&nbsp;добавляется седьмая, «Арктика», для работ, снятых на&nbsp;Крайнем Севере и&nbsp;в&nbsp;Заполярье.</p>
+      <a class="feat-news-cta" href="/news">Читать на странице новостей →</a>
+    </div>
+    <dl class="feat-news-meta">
+      <dt>Дата церемонии</dt>
+      <dd>25 сентября 2026</dd>
+      <dt>Площадка</dt>
+      <dd>Городской дворец культуры, Хабаровск</dd>
+      <dt>Программа</dt>
+      <dd>Мастер-классы, деловой блок, локейшен-тур, церемония вручения</dd>
+      <dt>Новая номинация</dt>
+      <dd>«Арктика» — фильмы о&nbsp;Крайнем Севере и&nbsp;Заполярье</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="edition-section gold reveal">
+  <div class="edition-line">
+    <h2>III сезон</h2>
+    <span></span>
+    <div>Хабаровск · 2026</div>
+  </div>
+  <div class="edition-foot">
+    <p>Профессиональная награда индустрии кино Дальнего Востока. В&nbsp;этом году&nbsp;— семь номинаций, включая новую категорию «Арктика».</p>
+    <a href="/nominations">Смотреть все номинации →</a>
+  </div>
+</section>
+
+<section class="about light-about reveal" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="av-inner">
+        <div class="av-num">ДВК</div>
+        <div class="av-sub">Дальневосточная кинопремия</div>
+      </div>
+      <div class="av-tag">Хабаровск · 2026</div>
+    </div>
+    <div class="about-text">
+      <div class="section-eyebrow">О премии</div>
+      <h2 class="section-title">Кино,<br />рождённое<br />на <span class="hl">Востоке</span></h2>
+      <p class="section-body">Дальневосточная кинопремия появилась в 2024 году по инициативе Министерства Российской Федерации по развитию Дальнего Востока и Арктики и Корпорации развития Дальнего Востока и Арктики. Оператором премии выступает ООО «Сердце Русского», проект реализуется при поддержке Министерства культуры Российской Федерации.</p>
+      <div class="about-pillars">
+        <div class="pillar"><div class="pillar-num">01</div><div class="pillar-text"><strong>Поддержка</strong> фильмов и авторов, создающих кино на Дальнем Востоке и о регионе</div></div>
+        <div class="pillar"><div class="pillar-num">02</div><div class="pillar-text"><strong>История</strong> от камерной московской церемонии до события в Улан-Удэ и Хабаровске</div></div>
+        <div class="pillar"><div class="pillar-num">03</div><div class="pillar-text"><strong>Индустрия</strong> диалог продюсеров, режиссёров, сценаристов, операторов и органов власти</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<aside class="discover discover-after-about">
+  <h3>Узнать<br />больше</h3>
+  <ul>
+    <li><a href="/nominations">Номинации 2026</a></li>
+    <li><a href="/regulation">Регламент и&nbsp;подача</a></li>
+    <li><a href="/program">Деловая программа</a></li>
+    <li><a href="/archive">Архив победителей</a></li>
+  </ul>
+</aside>
+
+<PhotoMarquee client:visible />
+
+<section class="nominations nominations-v2 reveal" id="nominations">
+  <div class="nominations-head">
+    <div class="nominations-head-left">
+      <div class="nominations-eyebrow">
+        <span class="dot"></span>
+        <span>Номинации 2026</span>
+      </div>
+      <h2 class="nominations-title">Шесть <em>категорий</em><br />одной премии</h2>
+    </div>
+    <p class="nominations-lead">На соискание принимаются игровые, неигровые и&nbsp;анимационные фильмы, сериалы и&nbsp;короткометражные работы, связанные с&nbsp;Дальневосточным федеральным округом.</p>
+  </div>
+
+  <div class="nom-list reveal-stagger">
+    <article class="nom-row">
+      <div class="nom-num">I</div>
+      <div class="nom-body">
+        <h3>Лучший полнометражный фильм или сериал</h3>
+        <p>Игровые, неигровые, анимационные. Вручается продюсеру картины. Хронометраж: от&nbsp;60&nbsp;минут для&nbsp;игровых, от&nbsp;52&nbsp;для&nbsp;неигровых.</p>
+      </div>
+      <div class="nom-meta">Полный метр</div>
+    </article>
+    <article class="nom-row">
+      <div class="nom-num">II</div>
+      <div class="nom-body">
+        <h3>Лучшая режиссёрская работа</h3>
+        <p>Награда режиссёру за&nbsp;выдающуюся постановочную работу в&nbsp;полнометражном игровом, неигровом, анимационном фильме или&nbsp;сериале.</p>
+      </div>
+      <div class="nom-meta">Режиссура</div>
+    </article>
+    <article class="nom-row">
+      <div class="nom-num">III</div>
+      <div class="nom-body">
+        <h3>Лучший сценарий</h3>
+        <p>Приз сценаристу или&nbsp;сценарной группе полнометражного игрового, неигрового, анимационного фильма или&nbsp;сериала.</p>
+      </div>
+      <div class="nom-meta">Сценарий</div>
+    </article>
+    <article class="nom-row">
+      <div class="nom-num">IV</div>
+      <div class="nom-body">
+        <h3>Лучший дебют</h3>
+        <p>Присуждается кинематографисту-дебютанту, чья первая работа в&nbsp;полном метре или&nbsp;сериале признана наиболее успешной.</p>
+      </div>
+      <div class="nom-meta">Дебют</div>
+    </article>
+    <article class="nom-row">
+      <div class="nom-num">V</div>
+      <div class="nom-body">
+        <h3>Лучший короткометражный фильм</h3>
+        <p>Игровые, неигровые, анимационные. До&nbsp;60&nbsp;минут для&nbsp;игровых, до&nbsp;52&nbsp;для&nbsp;неигровых. Вручается продюсеру короткометражной картины.</p>
+      </div>
+      <div class="nom-meta">Короткий метр</div>
+    </article>
+    <article class="nom-row">
+      <div class="nom-num">VI</div>
+      <div class="nom-body">
+        <h3>За&nbsp;вклад в&nbsp;развитие киноиндустрии Дальнего Востока</h3>
+        <p>Специальный приз оргкомитета для&nbsp;профессионалов и&nbsp;организаций, внёсших значимый вклад в&nbsp;развитие кино региона.</p>
+      </div>
+      <div class="nom-meta">Спец. приз</div>
+    </article>
+  </div>
+</section>
+
+<section class="partners-marquee" id="partners" aria-label="Партнёры">
+  <div class="strip-head">
+    <h2>Партнёры</h2>
+    <span class="line"></span>
+  </div>
+  <div class="partners-track" data-marquee>
+    <div class="partner-item"><div class="partner-abbr">МВР</div><div class="partner-name">Минвостокразвития</div></div>
+    <div class="partner-item"><img class="partner-logo-img" src="/assets/partners/krdv.png" alt="КРДВ" /><div class="partner-name">Корпорация развития ДВ и Арктики</div></div>
+    <div class="partner-item"><div class="partner-abbr">ФК</div><div class="partner-name">Фонд кино</div></div>
+    <div class="partner-item"><div class="partner-abbr">ФРСИ</div><div class="partner-name">Фонд развития соц. инициатив</div></div>
+    <div class="partner-item"><img class="partner-logo-img" src="/assets/partners/serdce-russkogo.png" alt="Сердце Русского" /><div class="partner-name">ООО «Сердце Русского»</div></div>
+    <div class="partner-item"><div class="partner-abbr">МК</div><div class="partner-name">Минкультуры РФ</div></div>
+    <div class="partner-item"><div class="partner-abbr">ДФО</div><div class="partner-name">Дальневосточный округ</div></div>
+  </div>
+</section>
+
+<div class="submit-section">
+  <div class="submit-inner">
+    <div class="submit-text">
+      <div class="section-eyebrow">Участие</div>
+      <h2 class="section-title">Подайте <span class="hl">заявку</span></h2>
+      <p class="section-body">Приём заявок откроется в апреле. Полная форма будет добавлена после утверждения технических деталей оргкомитетом.</p>
+    </div>
+    <div class="submit-cta-wrap">
+      <a href="/submit" class="btn-big">К странице заявки →</a>
+      <button type="button" class="link-button" data-lead-open>Оставить контакт</button>
+    </div>
+  </div>
+</div>
+
+</Layout>

@@ -1,0 +1,64 @@
+---
+interface Props { active?: string }
+const { active = "" } = Astro.props;
+const A = (k: string) => (active === k ? " active" : "");
+const inSet = (sets: string[]) => sets.includes(active) ? " active" : "";
+---
+<nav class="site-nav">
+  <a href="/" class="nav-logo" aria-label="Дальневосточная Кинопремия">
+    <img class="nav-logo-mark" src="/assets/logo/logo-1.png" alt="Дальневосточная Кинопремия 2026" />
+  </a>
+  <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" data-nav-menu>
+    <li><a href="/" class={A("home")}>Главная</a></li>
+
+    <li class="has-mega">
+      <a href="/about" class={inSet(["about","nominations","orgcommittee","expert-council"])}>Премия <span class="caret" aria-hidden="true">▼</span></a>
+      <div class="nav-mega" role="menu" aria-label="Премия">
+        <div class="mega-col mega-gold">
+          <h4>О премии</h4>
+          <a href="/about">История и миссия</a>
+          <a href="/nominations">Номинации 2026</a>
+        </div>
+        <div class="mega-col mega-gold">
+          <h4>Команды</h4>
+          <a href="/orgcommittee">Оргкомитет</a>
+          <a href="/expert-council">Экспертный совет</a>
+        </div>
+        <div class="mega-col mega-dark">
+          <h4>Узнать больше</h4>
+          <a href="/archive">Архив победителей</a>
+          <a href="/partners">Партнёры</a>
+        </div>
+      </div>
+    </li>
+
+    <li class="has-mega">
+      <a href="/program" class={inSet(["program","regulation","submit"])}>Участие <span class="caret" aria-hidden="true">▼</span></a>
+      <div class="nav-mega" role="menu" aria-label="Участие">
+        <div class="mega-col mega-gold">
+          <h4>Подача заявки</h4>
+          <a href="/submit">Подать заявку</a>
+          <a href="/regulation">Регламент</a>
+        </div>
+        <div class="mega-col mega-gold">
+          <h4>Программа</h4>
+          <a href="/program">Деловая программа</a>
+          <a href="/program#mc">Мастер-классы</a>
+        </div>
+        <div class="mega-col mega-dark">
+          <h4>Связь</h4>
+          <a href="/contacts">Контакты</a>
+          <a href="/news">Новости</a>
+        </div>
+      </div>
+    </li>
+
+    <li><a href="/archive" class={A("archive")}>Архив</a></li>
+    <li><a href="/news" class={A("news")}>Новости</a></li>
+    <li><a href="/contacts" class={A("contacts")}>Контакты</a></li>
+    <li><a href="/submit" class={"nav-cta" + A("submit")}>Подать заявку</a></li>
+  </ul>
+</nav>

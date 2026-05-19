@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const news = [
+  {
+    date: "18 мая 2026",
+    tag: "Press release",
+    title: "III Дальневосточная Кинопремия пройдёт в Хабаровске",
+    lead: "Главная сцена премии 2026 года переезжает в&nbsp;столицу ДФО. 25&nbsp;сентября — церемония в&nbsp;Городском дворце культуры. До&nbsp;этого — мастер-классы, деловой блок, локейшен-тур.",
+    image: "/assets/gallery/2025/LX3A5728_resized.jpg",
+    href: "#",
+  },
+  {
+    date: "12 мая 2026",
+    tag: "News",
+    title: "Седьмая номинация — «Арктика»",
+    lead: "В&nbsp;сезоне 2026 к&nbsp;шести основным категориям добавляется седьмая — для&nbsp;работ, снятых в&nbsp;Заполярье и&nbsp;на&nbsp;Крайнем Севере.",
+    image: "/assets/gallery/2024/3K6A3214_resized.jpg",
+    href: "#",
+  },
+  {
+    date: "Апрель 2026",
+    tag: "Press release",
+    title: "Приём заявок на премию 2026 готовится к старту",
+    lead: "Подробная информация о&nbsp;способах подачи будет опубликована после утверждения оргкомитетом технических деталей.",
+    image: "/assets/gallery/2025/LX3A5746_resized.jpg",
+    href: "/submit",
+  },
+  {
+    date: "Март 2026",
+    tag: "Press release",
+    title: "Экспертный совет формируется",
+    lead: "Состав Экспертного совета будет опубликован после утверждения оргкомитетом.",
+    image: "/assets/gallery/2024/3K6A1474_resized.jpg",
+    href: "/expert-council",
+  },
+];
+---
+<Layout title={`Новости · Дальневосточная Кинопремия 2026`} active={"news"}>
+
+<section class="page-hero v2">
+  <div class="page-hero-eyebrow"><span class="dot"></span><span>Новости и пресса</span></div>
+  <h1 class="page-hero-title" data-text-reveal>Новости и&nbsp;<em>анонсы</em></h1>
+  <p class="page-hero-lead">Лента публикаций о&nbsp;старте приёма заявок, экспертном совете, деловой программе и&nbsp;итогах церемонии.</p>
+</section>
+
+<section class="news-list reveal-stagger">
+  {news.map((n, i) => (
+    <article class={"news-row" + (i === 0 ? " featured" : "")}>
+      <div class="news-row-photo">
+        <img src={n.image} alt="" loading="lazy" />
+      </div>
+      <div class="news-row-body">
+        <div class="news-row-meta">
+          <span class="news-row-tag">{n.tag}</span>
+          <span class="news-row-date">{n.date}</span>
+        </div>
+        <h3 class="news-row-title">{n.title}</h3>
+        <p class="news-row-lead" set:html={n.lead}></p>
+        <a class="news-row-cta" href={n.href}>Читать целиком →</a>
+      </div>
+    </article>
+  ))}
+</section>
+
+</Layout>

@@ -1,0 +1,62 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./legacy.css";
+
+/* ════════ design tokens (extracted from europeanfilmawards.eu via designlang) ════════ */
+@theme {
+  --color-brand-primary: #1c1915;
+  --color-brand-gold:    #d99d47;
+  --color-brand-blue:    #0c4da2;
+  --color-bg:            #ffffff;
+  --color-bg-soft:       #f1f1f1;
+  --color-bg-warm:       #faf7f2;
+  --color-text:          #1c1915;
+  --color-text-mid:      #333333;
+  --color-text-soft:     #69727d;
+  --color-border:        #dad8d6;
+  --font-sans: 'Inter Tight', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Fraunces', 'Marcellus', 'Times New Roman', serif;
+  --animate-marquee:          marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-marquee-vertical: marquee-vertical var(--marquee-duration, 40s) linear infinite;
+  /* shadcn/ui compat tokens (для верстки 21st-dev компонентов как-есть) */
+  --color-background:        #ffffff;
+  --color-foreground:        #1c1915;
+  --color-muted:             #f1f1f1;
+  --color-muted-foreground:  #69727d;
+  --color-border:            #dad8d6;
+  --color-input:             #dad8d6;
+  --color-ring:              #1c1915;
+  --color-primary:           #1c1915;
+  --color-primary-foreground:#ffffff;
+  --color-accent:            #f1f1f1;
+  --color-accent-foreground: #1c1915;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-100% - var(--gap, 1.5rem))); }
+}
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to   { transform: translateY(calc(-100% - var(--gap, 1.5rem))); }
+}
+
+/* кастомные :root переменные (используются legacy-стилями ниже) */
+:root {
+  --brand-primary: #1c1915;
+  --brand-gold:    #d99d47;
+  --brand-blue:    #0c4da2;
+  --bg:        #ffffff;
+  --bg-soft:   #f1f1f1;
+  --bg-warm:   #faf7f2;
+  --text:      #1c1915;
+  --text-mid:  #333333;
+  --text-soft: #69727d;
+  --text-muted:#aba9a7;
+  --text-inv:  #ffffff;
+  --border:        #dad8d6;
+  --r-sm: 3px;
+  --r-md: 10px;
+  --font-sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Playfair Display', 'Times New Roman', serif;
+}
