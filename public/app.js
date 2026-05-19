@@ -222,12 +222,22 @@
 // Cursor trail — отключено по запросу
 
 // Reveal-on-scroll — IntersectionObserver: blur-up + stagger
+// + fast-path: элементы УЖЕ видимые на загрузке (выше fold'а) включаются
+// без задержки IO-callback'а — иначе они флешат blur'ом до первого тика.
 (function () {
   const targets = document.querySelectorAll('.reveal, .reveal-stagger');
+  if (!targets.length) return;
   if (!('IntersectionObserver' in window)) {
     targets.forEach((el) => el.classList.add('in'));
     return;
   }
+  const vh = window.innerHeight;
+  // Сначала пробегаем синхронно — всё что уже в viewport получает .in мгновенно
+  targets.forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (r.top < vh * 0.92 && r.bottom > 0) el.classList.add('in');
+  });
+  // IO для всего что ниже first fold
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -236,7 +246,7 @@
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-  targets.forEach((el) => io.observe(el));
+  targets.forEach((el) => { if (!el.classList.contains('in')) io.observe(el); });
 })();
 
 // Mouse-follow для .nom-card (radial-glow следует за курсором)
