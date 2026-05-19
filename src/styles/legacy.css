@@ -1114,7 +1114,18 @@ body.nav-open { overflow: hidden; }
 }
 @media (max-width: 560px) {
   body { font-size: 16px; }
-  .hero-title { font-size: clamp(48px, 13vw, 80px); line-height: 0.96; }
+  .hero-title {
+    font-size: clamp(36px, 11vw, 64px);
+    line-height: 0.95;
+    word-break: keep-all;
+    hyphens: none;
+    overflow-wrap: break-word;
+  }
+  .hero-text-col { padding-left: 18px; padding-right: 18px; }
+  .hero-text-col .hero-title { font-size: clamp(36px, 11vw, 64px) !important; margin-bottom: 20px; }
+  /* Карусели на мобиле — быстрее */
+  .partners-track { animation-duration: 22s !important; }
+  .photo-marquee-track { animation-duration: 30s !important; }
   .section-title { font-size: clamp(30px, 7vw, 44px); }
   .hero-sub { font-size: 18px; }
   .nav-wordmark .bot { font-size: 19px; }
