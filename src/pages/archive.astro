@@ -1,6 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+// Все фото сезонов — для ленты "Фотохроника сезона" под winners
+const PHOTOS_2024 = [
+  "3K6A1134","3K6A1301","3K6A1358","3K6A1474","3K6A1931","3K6A2040",
+  "3K6A2231","3K6A2517","3K6A2829","3K6A3186","3K6A3214",
+].map(n => `/assets/gallery/2024/${n}_resized.jpg`);
+
+const PHOTOS_2025 = [
+  "LX3A5728","LX3A5732","LX3A5740","LX3A5746","LX3A5765","LX3A5778",
+  "LX3A5786","LX3A5961","LX3A6180","LX3A6184","LX3A6215","LX3A6248",
+  "LX3A6615","LX3A6620","LX3A6647","LX3A6690",
+].map(n => `/assets/gallery/2025/${n}_resized.jpg`);
+
 type Winner = {
   num: string;        // I, II, III, IV, V, VI
   cat: string;        // короткая категория
@@ -99,6 +111,22 @@ const albums: Album[] = [
         </article>
       ))}
     </div>
+
+    <!-- Фотохроника сезона — горизонтальная лента всех фото года -->
+    <section class="album-photos">
+      <header class="album-photos-head">
+        <div class="page-hero-eyebrow"><span class="dot"></span><span>Фотохроника · {album.year}</span></div>
+        <h3>Кадры <em>{album.label}</em></h3>
+        <p>{album.year === "2024" ? PHOTOS_2024.length : PHOTOS_2025.length} фотографий · {album.place} · {album.date}</p>
+      </header>
+      <div class="album-photos-rail">
+        {(album.year === "2024" ? PHOTOS_2024 : PHOTOS_2025).map((src, i) => (
+          <a class="album-photos-card" href={src} target="_blank" rel="noopener" aria-label={`Фото ${i + 1}`}>
+            <img src={src} alt="" loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </section>
 
   </article>
 ))}
