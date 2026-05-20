@@ -121,14 +121,108 @@ const albums: Album[] = [
       </header>
       <div class="album-photos-rail">
         {(album.year === "2024" ? PHOTOS_2024 : PHOTOS_2025).map((src, i) => (
-          <a class="album-photos-card" href={src} target="_blank" rel="noopener" aria-label={`Фото ${i + 1}`}>
+          <button
+            type="button"
+            class="album-photos-card"
+            data-lightbox-group={album.year}
+            data-lightbox-index={i}
+            aria-label={`Открыть фото ${i + 1}`}
+          >
             <img src={src} alt="" loading="lazy" />
-          </a>
+            <span class="album-photos-card-hover">
+              <span class="album-photos-card-icon" aria-hidden="true">⤢</span>
+              <span class="album-photos-card-text">{i + 1} / {album.year === "2024" ? PHOTOS_2024.length : PHOTOS_2025.length}</span>
+            </span>
+          </button>
         ))}
       </div>
     </section>
 
   </article>
 ))}
+
+<!-- Lightbox: единый модальный просмотрщик для обеих фотохроник -->
+<div class="lightbox" data-lightbox hidden aria-hidden="true" role="dialog" aria-label="Просмотр фото">
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Закрыть">×</button>
+  <button type="button" class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label="Предыдущее фото">‹</button>
+  <button type="button" class="lightbox-nav lightbox-next" data-lightbox-next aria-label="Следующее фото">›</button>
+  <figure class="lightbox-stage">
+    <img class="lightbox-img" data-lightbox-img alt="" />
+    <figcaption class="lightbox-caption" data-lightbox-caption></figcaption>
+  </figure>
+</div>
+
+<script is:inline define:vars={{ photos2024: PHOTOS_2024, photos2025: PHOTOS_2025 }}>
+  (function() {
+    const GROUPS = { "2024": photos2024, "2025": photos2025 };
+    const root = document.querySelector("[data-lightbox]");
+    if (!root) return;
+    const imgEl = root.querySelector("[data-lightbox-img]");
+    const capEl = root.querySelector("[data-lightbox-caption]");
+    let active = null; // { group, index }
+
+    function open(group, index) {
+      active = { group, index };
+      render();
+      root.hidden = false;
+      root.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      requestAnimationFrame(() => root.classList.add("is-open"));
+    }
+    function close() {
+      root.classList.remove("is-open");
+      root.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      setTimeout(() => { root.hidden = true; active = null; }, 250);
+    }
+    function step(delta) {
+      if (!active) return;
+      const list = GROUPS[active.group];
+      if (!list || !list.length) return;
+      active.index = (active.index + delta + list.length) % list.length;
+      render();
+    }
+    function render() {
+      if (!active) return;
+      const list = GROUPS[active.group];
+      const src = list[active.index];
+      imgEl.src = src;
+      imgEl.alt = `Фото ${active.index + 1} из ${list.length}`;
+      capEl.textContent = `${active.group} · ${active.index + 1} / ${list.length}`;
+    }
+
+    document.addEventListener("click", (e) => {
+      const card = e.target.closest("[data-lightbox-group]");
+      if (card) {
+        e.preventDefault();
+        open(card.dataset.lightboxGroup, Number(card.dataset.lightboxIndex) || 0);
+        return;
+      }
+      if (e.target.closest("[data-lightbox-close]")) { close(); return; }
+      if (e.target.closest("[data-lightbox-prev]"))  { step(-1); return; }
+      if (e.target.closest("[data-lightbox-next]"))  { step(+1); return; }
+      // клик на фон (не на изображение/кнопки) — закрыть
+      if (e.target === root) close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (root.hidden) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft")  step(-1);
+      else if (e.key === "ArrowRight") step(+1);
+    });
+
+    // Свайпы на мобиле
+    let touchX = null;
+    root.addEventListener("touchstart", (e) => {
+      touchX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    root.addEventListener("touchend", (e) => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 40) step(dx < 0 ? +1 : -1);
+      touchX = null;
+    }, { passive: true });
+  })();
+</script>
 
 </Layout>
