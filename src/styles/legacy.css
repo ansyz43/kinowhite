@@ -118,16 +118,21 @@ body { padding-top: 84px; }
 }
 .logo-feature-img:hover { opacity: 1; transform: scale(1.03); }
 
-/* Верхний вариант (над hero) — с встроенным дата-бейджем */
-.logo-feature-top {
-  padding: 56px 24px 36px;
-  background: var(--bg);
-  position: relative;
-}
-.logo-feature-top::after {
-  content: ""; position: absolute; left: 24px; right: 24px; bottom: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--brand-gold) 30%, var(--brand-gold) 70%, transparent);
-  opacity: .45;
+/* Верхний вариант (над hero) — показываем ТОЛЬКО на мобиле.
+   На десктопе крупный лого уже есть в навбаре, дублировать ни к чему. */
+.logo-feature-top { display: none; }
+@media (max-width: 900px) {
+  .logo-feature-top {
+    display: flex;
+    padding: 22px 18px 22px;
+    background: var(--bg);
+    position: relative;
+  }
+  .logo-feature-top::after {
+    content: ""; position: absolute; left: 24px; right: 24px; bottom: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--brand-gold) 30%, var(--brand-gold) 70%, transparent);
+    opacity: .45;
+  }
 }
 .logo-feature-dates {
   display: inline-flex; flex-direction: column; align-items: center; gap: 4px;
@@ -3289,10 +3294,29 @@ footer.split { padding: 0; background: var(--bg); color: var(--text); border-top
   font-style: italic; font-size: 16px; letter-spacing: 0;
 }
 @media (max-width: 900px) {
-  .site-footer { padding: 64px 24px 20px; }
-  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-  .site-footer .footer-cols { flex-direction: column; gap: 24px; }
-  .site-footer .footer-meta { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .site-footer { padding: 56px 20px 18px; text-align: center; }
+  .footer-inner {
+    grid-template-columns: 1fr; gap: 36px;
+    justify-items: center; text-align: center;
+  }
+  .site-footer .footer-logo {
+    justify-content: center;
+    width: 100%;
+  }
+  .site-footer .footer-logo-img { margin: 0 auto; }
+  .site-footer .footer-cols {
+    flex-direction: column; gap: 28px;
+    width: 100%; align-items: center;
+  }
+  .site-footer .footer-col { width: 100%; text-align: center; }
+  .site-footer .footer-col h4 { text-align: center; }
+  .site-footer .footer-col ul { align-items: center; gap: 10px; }
+  .site-footer .footer-col ul li { text-align: center; }
+  .site-footer .footer-col ul li a { display: inline-block; }
+  .site-footer .footer-meta {
+    flex-direction: column; gap: 8px; align-items: center; text-align: center;
+  }
+  .site-footer .footer-meta p { text-align: center; margin: 0; }
 }
 
 /* ════════ Light About — белая секция с декоративными линиями (вместо dark) ════════ */
