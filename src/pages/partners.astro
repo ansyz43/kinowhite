@@ -1,9 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const partners = [
-  { abbr: "КРДВ", logo: "/assets/partners/krdv.png",       name: "Корпорация развития Дальнего Востока и&nbsp;Арктики", role: "Учредитель" },
-  { abbr: "СР",   logo: "/assets/partners/serdce-russkogo.png", name: "ООО «Сердце Русского»", role: "Оператор" },
+type Partner = { abbr: string; logo: string; name: string; role: string; invert?: boolean };
+const partners: Partner[] = [
+  { abbr: "МВР",  logo: "/assets/partners/mvr.png",             invert: true, name: "Министерство Российской Федерации по&nbsp;развитию Дальнего Востока и&nbsp;Арктики", role: "Учредитель" },
+  { abbr: "КРДВ", logo: "/assets/partners/krdv.png",                          name: "Корпорация развития Дальнего Востока и&nbsp;Арктики", role: "Учредитель" },
+  { abbr: "МК",   logo: "/assets/partners/minkult.jpg",                       name: "Министерство культуры Российской Федерации", role: "При поддержке" },
+  { abbr: "ХК",   logo: "/assets/partners/khabarovsk-kray.png",               name: "Правительство Хабаровского края", role: "Регион" },
+  { abbr: "ХБР",  logo: "/assets/partners/khabarovsk-gerb.png",               name: "Администрация г.&nbsp;Хабаровск", role: "Город" },
+  { abbr: "СР",   logo: "/assets/partners/serdce-russkogo.png",               name: "ООО «Сердце Русского»", role: "Оператор" },
 ];
 ---
 <Layout title={`Партнёры · Дальневосточная Кинопремия 2026`} active={"partners"}>
@@ -17,10 +22,7 @@ const partners = [
 <section class="partners-list reveal-stagger">
   {partners.map((p, i) => (
     <article class="partner-row">
-      {p.logo
-        ? <img class="partner-row-logo" src={p.logo} alt={p.abbr} />
-        : <div class="partner-row-abbr">{p.abbr}</div>
-      }
+      <img class={"partner-row-logo" + (p.invert ? " is-invert" : "")} src={p.logo} alt={p.abbr} />
       <div class="partner-row-body">
         <h3 class="partner-row-name" set:html={p.name}></h3>
         <div class="partner-row-meta">{String(i + 1).padStart(2, "0")} · {p.role}</div>

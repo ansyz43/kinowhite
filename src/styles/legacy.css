@@ -3680,14 +3680,25 @@ footer.split { padding: 0; background: var(--bg); color: var(--text); border-top
   font-weight: 500; opacity: 0.75; transition: opacity .2s;
 }
 .partners-track .partner-item:hover .partner-abbr { opacity: 1; }
-/* PNG-логотип внутри marquee — высота фиксирована, ширина авто.
-   Оба лого (КРДВ и Сердце Русского) должны выглядеть одного размера. */
+/* PNG-логотип внутри marquee — единая высота, ширина авто.
+   Все 6 лого партнёров должны смотреться одного визуального размера. */
 .partners-track .partner-logo-img {
   height: 72px; width: auto; max-width: 220px;
   object-fit: contain;
   filter: grayscale(0.2);
   opacity: 0.92;
   transition: filter .35s ease, opacity .35s ease, transform .35s ease;
+}
+/* Белые лого (МВР) на светлом фоне — инвертируем в тёмный */
+.partners-track .partner-logo-img[data-invert] {
+  filter: grayscale(0.2) invert(1) brightness(0.6);
+}
+.partners-track .partner-item:hover .partner-logo-img[data-invert] {
+  filter: invert(1) brightness(0.45);
+}
+/* Та же инверсия в списке партнёров на /partners */
+.partners-list .partner-row-logo.is-invert {
+  filter: invert(1) brightness(0.6);
 }
 .partners-track .partner-item:hover .partner-logo-img {
   filter: grayscale(0);
