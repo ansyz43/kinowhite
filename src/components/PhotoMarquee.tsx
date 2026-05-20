@@ -1,17 +1,22 @@
 import { useMemo } from "react";
 
-type Photo = { image: string; title: string; meta: string };
+type Photo = { image: string; year: "2024" | "2025" };
 
 const defaultPhotos: Photo[] = [
-  { image: "/assets/gallery/2025/LX3A5728_resized.jpg", title: "II Дальневосточная кинопремия", meta: "Улан-Удэ · 2025" },
-  { image: "/assets/gallery/2024/3K6A1134_resized.jpg", title: "I Дальневосточная кинопремия", meta: "2024" },
-  { image: "/assets/gallery/2025/LX3A5746_resized.jpg", title: "Деловая программа", meta: "Улан-Удэ · 2025" },
-  { image: "/assets/gallery/2024/3K6A2040_resized.jpg", title: "Церемония вручения", meta: "2024" },
-  { image: "/assets/gallery/2025/LX3A6180_resized.jpg", title: "Мастер-классы", meta: "Улан-Удэ · 2025" },
-  { image: "/assets/gallery/2024/3K6A2829_resized.jpg", title: "Локейшен-тур", meta: "2024" },
-  { image: "/assets/gallery/2025/LX3A6615_resized.jpg", title: "Гости церемонии", meta: "Улан-Удэ · 2025" },
-  { image: "/assets/gallery/2024/3K6A3214_resized.jpg", title: "Шорт-лист 2024", meta: "I Дальневосточная кинопремия" },
+  { image: "/assets/gallery/2025/LX3A5728_resized.jpg", year: "2025" },
+  { image: "/assets/gallery/2024/3K6A1134_resized.jpg", year: "2024" },
+  { image: "/assets/gallery/2025/LX3A5746_resized.jpg", year: "2025" },
+  { image: "/assets/gallery/2024/3K6A2040_resized.jpg", year: "2024" },
+  { image: "/assets/gallery/2025/LX3A6180_resized.jpg", year: "2025" },
+  { image: "/assets/gallery/2024/3K6A2829_resized.jpg", year: "2024" },
+  { image: "/assets/gallery/2025/LX3A6615_resized.jpg", year: "2025" },
+  { image: "/assets/gallery/2024/3K6A3214_resized.jpg", year: "2024" },
 ];
+
+const SEASON: Record<Photo["year"], string> = {
+  "2024": "I сезон · Москва · 2024",
+  "2025": "II сезон · Улан-Удэ · 2025",
+};
 
 export default function PhotoMarquee({ photos = defaultPhotos, duration = 60 }: { photos?: Photo[]; duration?: number }) {
   // Дублируем массив один раз — track ширины 200%, анимация уходит на -50%, склейка незаметна.
@@ -42,11 +47,8 @@ export default function PhotoMarquee({ photos = defaultPhotos, duration = 60 }: 
               className="photo-marquee-card"
               aria-hidden={i >= photos.length ? true : undefined}
             >
-              <img src={p.image} alt={p.title} loading="lazy" />
-              <div className="photo-marquee-cap">
-                <h3>{p.title}</h3>
-                <p>{p.meta}</p>
-              </div>
+              <img src={p.image} alt="" loading="lazy" />
+              <span className="photo-marquee-year">{SEASON[p.year]}</span>
             </article>
           ))}
         </div>
