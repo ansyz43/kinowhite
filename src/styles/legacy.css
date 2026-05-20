@@ -95,30 +95,35 @@ nav.nav-hidden, .site-nav.nav-hidden { transform: translateY(-110%); }
 body { padding-top: 84px; }
 @media(max-width:900px){ body { padding-top: 72px; } }
 .nav-logo { display: flex; align-items: center; gap: 14px; min-width: 0; }
-.nav-logo-mark { height: 72px; width: auto; max-width: 280px; object-fit: contain; flex: 0 0 auto; display: block; }
+.nav-logo-mark {
+  height: 104px; width: auto; max-width: 360px;
+  object-fit: contain; flex: 0 0 auto; display: block;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.04));
+}
 .nav-wordmark { display: none; }  /* лого теперь со встроенной надписью */
-.footer-logo-img { height: 140px; width: auto; object-fit: contain; display: block; opacity: 1; }
+.footer-logo-img { height: 160px; width: auto; object-fit: contain; display: block; opacity: 1; }
 
 /* Большой лого на главной — лаконичный mark между hero и stats */
 .logo-feature {
   display: flex; justify-content: center; align-items: center;
-  padding: 56px 24px 24px;
+  padding: 64px 24px 32px;
   background: var(--bg);
 }
 .logo-feature-img {
-  height: 220px; width: auto; object-fit: contain;
+  height: 320px; width: auto; object-fit: contain;
   display: block;
-  opacity: 0.95;
+  opacity: 1;
   transition: opacity .4s ease, transform .5s cubic-bezier(.2,.7,.2,1);
 }
 .logo-feature-img:hover { opacity: 1; transform: scale(1.03); }
 @media (max-width: 900px) {
-  .logo-feature { padding: 40px 24px 16px; }
-  .logo-feature-img { height: 160px; }
+  .logo-feature { padding: 44px 18px 20px; }
+  .logo-feature-img { height: 220px; }
 }
 @media (max-width: 900px) {
-  .nav-logo-mark { height: 56px; }
-  .footer-logo-img { height: 96px; }
+  body { padding-top: 86px; }
+  .nav-logo-mark { height: 72px; max-width: 230px; }
+  .footer-logo-img { height: 112px; }
 }
 .nav-wordmark { display: flex; flex-direction: column; line-height: 1; }
 .nav-wordmark .top {
@@ -1129,7 +1134,7 @@ body.nav-open { overflow: hidden; }
   /* Партнёры на мобиле — компактнее, чтобы помещалось несколько одновременно */
   .partners-track .partner-item { padding: 0 4px !important; gap: 4px !important; }
   .partners-track .partner-abbr { font-size: 20px !important; }
-  .partners-track .partner-logo-img { height: 32px !important; max-width: 90px !important; }
+  .partners-track .partner-logo-img { height: 48px !important; max-width: 130px !important; }
   .partners-track .partner-name { font-size: 9px !important; letter-spacing: 0.04em !important; max-width: 110px !important; white-space: normal !important; line-height: 1.15 !important; }
   .partners-marquee::before, .partners-marquee::after { width: 40px !important; }
   .partners-marquee .strip-head { padding: 0 18px !important; }
@@ -1138,7 +1143,8 @@ body.nav-open { overflow: hidden; }
   .hero-sub { font-size: 18px; }
   .nav-wordmark .bot { font-size: 19px; }
   .nav-wordmark .top { font-size: 10px; }
-  .nav-logo-mark { width: 40px; height: 40px; }
+  .nav-logo-mark { height: 60px; max-width: 200px; width: auto; }
+  body { padding-top: 76px; }
   .news-headline { font-size: 20px; }
   .news-card.featured .news-headline { font-size: 24px; }
   .film-title { font-size: 24px; }
@@ -3601,12 +3607,13 @@ footer.split { padding: 0; background: var(--bg); color: var(--text); border-top
   font-weight: 500; opacity: 0.75; transition: opacity .2s;
 }
 .partners-track .partner-item:hover .partner-abbr { opacity: 1; }
-/* PNG-логотип внутри marquee — высота фиксирована, ширина авто */
+/* PNG-логотип внутри marquee — высота фиксирована, ширина авто.
+   Оба лого (КРДВ и Сердце Русского) должны выглядеть одного размера. */
 .partners-track .partner-logo-img {
-  height: 56px; width: auto; max-width: 180px;
+  height: 72px; width: auto; max-width: 220px;
   object-fit: contain;
-  filter: grayscale(0.4);
-  opacity: 0.78;
+  filter: grayscale(0.2);
+  opacity: 0.92;
   transition: filter .35s ease, opacity .35s ease, transform .35s ease;
 }
 .partners-track .partner-item:hover .partner-logo-img {
@@ -3683,3 +3690,52 @@ footer.split { padding-left: 0; padding-right: 0; }
     padding-left: 24px; padding-right: 24px;
   }
 }
+
+/* ════════ Hero: «Старт приёма заявок — 22 мая 2026» ════════ */
+.hero-cta-note {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin: 0 0 22px;
+  padding: 10px 16px;
+  background: linear-gradient(180deg, rgba(217,157,71,.12), rgba(217,157,71,.04));
+  border: 1px solid rgba(217,157,71,.45);
+  border-radius: 999px;
+  font-family: var(--font-sans); font-size: 13px; letter-spacing: 0.02em;
+  color: var(--brand-primary);
+}
+.hero-cta-note strong {
+  font-weight: 700;
+  color: var(--brand-primary);
+  white-space: nowrap;
+}
+.hero-cta-note-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--brand-gold);
+  box-shadow: 0 0 0 4px rgba(217,157,71,.18);
+  animation: hero-cta-pulse 2.2s ease-in-out infinite;
+  flex: 0 0 auto;
+}
+@keyframes hero-cta-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(217,157,71,.18); }
+  50%      { box-shadow: 0 0 0 8px rgba(217,157,71,.05); }
+}
+@media (max-width: 560px) {
+  .hero-cta-note { font-size: 12px; padding: 9px 14px; }
+}
+
+/* ════════ Nominations: подсветка новой VII «Арктика» ════════ */
+.nom-row-new {
+  background: linear-gradient(90deg, rgba(217,157,71,.06), transparent 60%);
+  border-left: 2px solid var(--brand-gold) !important;
+  padding-left: 22px !important;
+}
+.nom-new-tag {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 3px 9px 4px;
+  font-family: var(--font-sans); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em;
+  background: var(--brand-gold); color: var(--brand-primary);
+  border-radius: 4px;
+  vertical-align: middle;
+}
+

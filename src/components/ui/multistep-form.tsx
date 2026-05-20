@@ -12,24 +12,57 @@ type Step = {
   label: string
   field: string
   placeholder: string
+  type?: string
 }
 
 const steps: Step[] = [
   { id: 1, label: "Название фильма", field: "title", placeholder: "Например: «Сто лет тому вперёд»" },
   { id: 2, label: "Имя и роль", field: "name", placeholder: "Иван Иванов · продюсер" },
-  { id: 3, label: "E-mail для связи", field: "email", placeholder: "you@studio.ru" },
+  { id: 3, label: "E-mail для связи", field: "email", placeholder: "you@studio.ru", type: "email" },
 ]
 
 export function MultiStepForm() {
   const [currentStep, setCurrentStep] = useState(0)
   const [formData, setFormData] = useState<Record<string, string>>({})
   const [isComplete, setIsComplete] = useState(false)
+  const [isSending, setIsSending] = useState(false)
+  const [errorMsg, setErrorMsg] = useState<string | null>(null)
+
+  const submitToServer = async (payload: Record<string, string>) => {
+    setIsSending(true)
+    setErrorMsg(null)
+    try {
+      const res = await fetch("/api/lead.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...payload,
+          page: typeof window !== "undefined" ? window.location.pathname : "/submit",
+          company: "", // honeypot
+        }),
+      })
+      if (!res.ok && res.status !== 202) {
+        let msg = "Не удалось отправить заявку"
+        try { const j = await res.json(); if (j?.error) msg = j.error } catch {}
+        throw new Error(msg)
+      }
+      setIsComplete(true)
+    } catch (e) {
+      // На статичном предпросмотре (vite dev) /api/lead.php отдаст 404 —
+      // показываем мягкую ошибку, но не теряем данные.
+      const m = e instanceof Error ? e.message : "Ошибка сети"
+      setErrorMsg(m + ". Напишите напрямую на dvfilmaward2026@mail.ru")
+    } finally {
+      setIsSending(false)
+    }
+  }
 
   const handleNext = () => {
+    if (isSending) return
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1)
     } else {
-      setIsComplete(true)
+      void submitToServer(formData)
     }
   }
 
@@ -134,11 +167,15 @@ export function MultiStepForm() {
 
         <Button
           onClick={handleNext}
-          disabled={!formData[currentStepData.field]?.trim()}
+          disabled={!formData[currentStepData.field]?.trim() || isSending}
           className="w-full h-12 group relative transition-all duration-300 hover:shadow-lg hover:shadow-foreground/5"
         >
           <span className="flex items-center justify-center gap-2 font-medium">
-            {currentStep === steps.length - 1 ? "Отправить" : "Далее"}
+            {isSending
+              ? "Отправляем…"
+              : currentStep === steps.length - 1
+                ? "Отправить"
+                : "Далее"}
             <ArrowRightIcon
               className="h-4 w-4 transition-transform group-hover:translate-x-0.5 duration-300"
               strokeWidth={2}
@@ -146,10 +183,17 @@ export function MultiStepForm() {
           </span>
         </Button>
 
+        {errorMsg && (
+          <p className="text-center text-sm text-red-600/80 animate-in fade-in duration-300">
+            {errorMsg}
+          </p>
+        )}
+
         {currentStep > 0 && (
           <button
             onClick={() => setCurrentStep(currentStep - 1)}
-            className="w-full text-center text-sm text-muted-foreground/60 hover:text-foreground/80 transition-all duration-300"
+            disabled={isSending}
+            className="w-full text-center text-sm text-muted-foreground/60 hover:text-foreground/80 transition-all duration-300 disabled:opacity-40"
           >
             Назад
           </button>
