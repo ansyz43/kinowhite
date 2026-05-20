@@ -31,25 +31,38 @@ export function MultiStepForm() {
   const submitToServer = async (payload: Record<string, string>) => {
     setIsSending(true)
     setErrorMsg(null)
+    // Пробуем сначала Node-эндпоинт (timeweb), при 404 — PHP-фоллбэк (reg.ru).
+    // Так одна форма работает на обоих хостингах без переключений.
+    const endpoints = ["/api/lead", "/api/lead.php"]
+    const body = JSON.stringify({
+      ...payload,
+      page: typeof window !== "undefined" ? window.location.pathname : "/submit",
+      company: "", // honeypot
+    })
+    let lastErr: string | null = null
     try {
-      const res = await fetch("/api/lead.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...payload,
-          page: typeof window !== "undefined" ? window.location.pathname : "/submit",
-          company: "", // honeypot
-        }),
-      })
-      if (!res.ok && res.status !== 202) {
-        let msg = "Не удалось отправить заявку"
-        try { const j = await res.json(); if (j?.error) msg = j.error } catch {}
-        throw new Error(msg)
+      for (const url of endpoints) {
+        try {
+          const res = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body,
+          })
+          if (res.status === 404) { lastErr = "404"; continue }
+          if (!res.ok && res.status !== 202) {
+            let msg = "Не удалось отправить заявку"
+            try { const j = await res.json(); if (j?.error) msg = j.error } catch {}
+            throw new Error(msg)
+          }
+          setIsComplete(true)
+          return
+        } catch (e) {
+          lastErr = e instanceof Error ? e.message : "network"
+          // network-ошибки — пробуем следующий эндпоинт
+        }
       }
-      setIsComplete(true)
+      throw new Error(lastErr || "Сервер недоступен")
     } catch (e) {
-      // На статичном предпросмотре (vite dev) /api/lead.php отдаст 404 —
-      // показываем мягкую ошибку, но не теряем данные.
       const m = e instanceof Error ? e.message : "Ошибка сети"
       setErrorMsg(m + ". Напишите напрямую на dvfilmaward2026@mail.ru")
     } finally {
