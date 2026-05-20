@@ -1512,10 +1512,20 @@ footer.split { padding: 0; background: var(--bg); color: var(--text); border-top
   font-family: var(--font-serif); font-size: 22px; color: var(--brand-primary);
   font-weight: 500; margin: 0; line-height: 1.1; letter-spacing: -0.01em;
 }
+/* Ключевые даты приёма заявок — выделяем визуально */
+.hero-meta-row .is-key dt {
+  color: var(--brand-primary); font-weight: 700;
+}
+.hero-meta-row .is-key dd { font-size: 24px; font-weight: 600; }
+.hero-meta-row .hl-date {
+  background: linear-gradient(180deg, transparent 60%, rgba(217,157,71,.35) 60%);
+  padding: 0 2px;
+}
 @media (max-width: 900px) {
   .hero-text-col { padding: 32px 24px; }
-  .hero-meta-row { grid-template-columns: 1fr 1fr; padding-top: 14px; gap: 14px 16px; }
+  .hero-meta-row { grid-template-columns: 1fr; padding-top: 16px; gap: 12px; }
   .hero-meta-row dd { font-size: 18px; }
+  .hero-meta-row .is-key dd { font-size: 19px; }
 }
 .hero-text-col .hero-eyebrow { grid-column: auto; }
 .hero-text-col .hero-title { grid-column: auto; font-size: clamp(56px, 7.4vw, 124px); margin-bottom: 32px; }
