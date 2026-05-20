@@ -2043,10 +2043,11 @@ footer.split { padding: 0; background: var(--bg); color: var(--text); border-top
    ════════════════════════════════════════════════ */
 .partners-list { padding: 48px 64px 80px; }
 .partner-row {
-  display: grid; grid-template-columns: 120px 1fr 160px;
-  gap: 32px; align-items: center;
+  display: grid; grid-template-columns: 200px 1fr 160px;
+  gap: 40px; align-items: center;
   padding: 28px 0; border-bottom: 1px solid var(--border);
   transition: padding-left .35s cubic-bezier(.2,.7,.2,1);
+  min-height: 140px;
 }
 .partner-row:last-child { border-bottom: none; }
 .partner-row:hover { padding-left: 16px; }
@@ -2057,9 +2058,14 @@ footer.split { padding: 0; background: var(--bg); color: var(--text); border-top
   transition: color .35s ease;
 }
 .partner-row:hover .partner-row-abbr { color: var(--brand-gold); }
-/* PNG-логотип на странице /partners — крупно слева, grayscale в покое */
+/* Бокс под лого — фиксированной формы, все 6 партнёров визуально одного размера */
+.partner-row-logo-box {
+  width: 200px; height: 110px;
+  display: flex; align-items: center; justify-content: center;
+  flex: 0 0 auto;
+}
 .partner-row-logo {
-  height: clamp(72px, 8vw, 112px); width: auto; max-width: 200px;
+  max-width: 100%; max-height: 100%; width: auto; height: auto;
   object-fit: contain;
   filter: grayscale(0.5);
   opacity: 0.85;
@@ -2087,7 +2093,8 @@ footer.split { padding: 0; background: var(--bg); color: var(--text); border-top
 }
 @media (max-width: 900px) {
   .partners-list { padding: 32px 24px; }
-  .partner-row { grid-template-columns: 80px 1fr; gap: 16px; }
+  .partner-row { grid-template-columns: 110px 1fr; gap: 20px; min-height: 96px; }
+  .partner-row-logo-box { width: 110px; height: 80px; }
   .partner-row-tag { display: none; }
 }
 

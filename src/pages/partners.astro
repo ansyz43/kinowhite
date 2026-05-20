@@ -22,7 +22,9 @@ const partners: Partner[] = [
 <section class="partners-list reveal-stagger">
   {partners.map((p, i) => (
     <article class="partner-row">
-      <img class={"partner-row-logo" + (p.invert ? " is-invert" : "")} src={p.logo} alt={p.abbr} />
+      <div class="partner-row-logo-box">
+        <img class={"partner-row-logo" + (p.invert ? " is-invert" : "")} src={p.logo} alt={p.abbr} />
+      </div>
       <div class="partner-row-body">
         <h3 class="partner-row-name" set:html={p.name}></h3>
         <div class="partner-row-meta">{String(i + 1).padStart(2, "0")} · {p.role}</div>
