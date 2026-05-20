@@ -27,15 +27,14 @@ const LEADS_LOG = resolve(__dirname, "leads.log");
 //   SMTP_USER=info@домен.ру
 //   SMTP_PASS=•••
 //   MAIL_FROM=info@домен.ру    (по умолчанию = SMTP_USER)
-//   MAIL_TO=redpulsestudio@inbox.ru   (можно не задавать — default ниже)
+//   MAIL_TO=dvfilmaward2026@mail.ru   (можно не задавать — default ниже)
 const SMTP_HOST   = process.env.SMTP_HOST   || "";
 const SMTP_PORT   = Number(process.env.SMTP_PORT || 465);
 const SMTP_SECURE = (process.env.SMTP_SECURE || "ssl").toLowerCase();
 const SMTP_USER   = process.env.SMTP_USER   || "";
 const SMTP_PASS   = process.env.SMTP_PASS   || "";
 const MAIL_FROM   = process.env.MAIL_FROM   || SMTP_USER || "noreply@localhost";
-// ВРЕМЕННАЯ почта для проверки. Боевая: dvfilmaward2026@mail.ru
-const MAIL_TO     = process.env.MAIL_TO     || "redpulsestudio@inbox.ru";
+const MAIL_TO     = process.env.MAIL_TO     || "dvfilmaward2026@mail.ru";
 const HAS_MAIL    = !!(SMTP_HOST && SMTP_USER && SMTP_PASS);
 
 if (!HAS_MAIL) {

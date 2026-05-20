@@ -11,8 +11,7 @@
  *    - Параллельно пишет лог в /api/leads.log (тот же каталог),
  *      чтобы заявки не потерялись, если SMTP упал.
  *
- *  Куда падают письма: ВРЕМЕННО redpulsestudio@inbox.ru (для проверки).
- *  Боевой адрес: dvfilmaward2026@mail.ru — переключить в константе MAIL_TO ниже.
+ *  Куда падают письма: dvfilmaward2026@mail.ru — официальная почта премии.
  *  Откуда уходят: noreply@<домен сайта> — авто-определяется по $_SERVER['HTTP_HOST'].
  *  При необходимости — поменяйте константу MAIL_FROM ниже на нужный mailbox
  *  (например info@dvkinopremiya.ru — после привязки домена в панели reg.ru).
@@ -21,8 +20,7 @@
 declare(strict_types=1);
 
 /* ---------- НАСТРОЙКИ ---------- */
-// ВРЕМЕННАЯ почта для проверки доставки. Боевая: 'dvfilmaward2026@mail.ru'
-const MAIL_TO       = 'redpulsestudio@inbox.ru';
+const MAIL_TO       = 'dvfilmaward2026@mail.ru';  // официальная почта премии
 const MAIL_FROM     = '';                    // оставить пустым → auto noreply@<host>
 const MAIL_FROM_NAME= 'Сайт ДВ Кинопремии';
 const RATE_LIMIT_SEC= 30;                    // не чаще 1 заявки за 30 сек с одного IP
