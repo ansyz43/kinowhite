@@ -4,6 +4,15 @@ import PhotoMarquee from "../components/PhotoMarquee.tsx";
 ---
 <Layout title="Главная · Дальневосточная Кинопремия 2026" active="home">
 
+<!-- Лого ДВК — крупный mark СРАЗУ при входе на сайт (виден и на десктопе, и на мобиле) -->
+<section class="logo-feature logo-feature-top">
+  <img src="/assets/logo/logo-1.png" alt="Дальневосточная Кинопремия" class="logo-feature-img" />
+  <div class="logo-feature-dates">
+    <span class="logo-feature-dates-num">23–25 сентября 2026</span>
+    <span class="logo-feature-dates-place">г.&nbsp;Хабаровск · III церемония</span>
+  </div>
+</section>
+
 <section class="hero home-hero">
   <div class="hero-content">
     <div class="hero-text-col">
@@ -13,7 +22,6 @@ import PhotoMarquee from "../components/PhotoMarquee.tsx";
         <span class="accent">кинопремия</span>
       </h1>
       <p class="hero-sub">Профессиональная награда для тех, кто снимает кино на&nbsp;Дальнем Востоке и&nbsp;о&nbsp;Дальнем Востоке.</p>
-      <div class="hero-cta-note"><span class="hero-cta-note-dot"></span>Старт приёма заявок — <strong>22&nbsp;мая 2026</strong></div>
       <div class="hero-actions">
         <a href="/submit" class="btn-primary">Подать заявку →</a>
         <a href="/archive" class="btn-ghost">Архив победителей</a>
@@ -35,11 +43,6 @@ import PhotoMarquee from "../components/PhotoMarquee.tsx";
 </section>
 
 <hr class="gold-line" />
-
-<!-- Лого ДВК — крупный лаконичный mark между hero и stats -->
-<section class="logo-feature">
-  <img src="/assets/logo/logo-1.png" alt="Дальневосточная Кинопремия" class="logo-feature-img" />
-</section>
 
 <section class="stats-strip">
   <div class="stats-strip-inner">
@@ -183,11 +186,11 @@ import PhotoMarquee from "../components/PhotoMarquee.tsx";
       </div>
       <div class="nom-meta">Спец. приз</div>
     </article>
-    <article class="nom-row nom-row-new">
+    <article class="nom-row">
       <div class="nom-num">VII</div>
       <div class="nom-body">
-        <h3>Лучший фильм об&nbsp;Арктике и&nbsp;Крайнем Севере <span class="nom-new-tag">NEW</span></h3>
-        <p>Новая номинация сезона&nbsp;2026. Игровые и&nbsp;неигровые работы, снятые в&nbsp;Заполярье или&nbsp;посвящённые жизни и&nbsp;культуре северных регионов России.</p>
+        <h3>Лучший фильм об&nbsp;Арктике и&nbsp;Крайнем Севере</h3>
+        <p>Игровые и&nbsp;неигровые работы, снятые в&nbsp;Заполярье или&nbsp;посвящённые жизни и&nbsp;культуре северных регионов России.</p>
       </div>
       <div class="nom-meta">Арктика</div>
     </article>

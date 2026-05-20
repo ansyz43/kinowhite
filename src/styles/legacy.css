@@ -103,11 +103,12 @@ body { padding-top: 84px; }
 .nav-wordmark { display: none; }  /* лого теперь со встроенной надписью */
 .footer-logo-img { height: 160px; width: auto; object-fit: contain; display: block; opacity: 1; }
 
-/* Большой лого на главной — лаконичный mark между hero и stats */
+/* Большой лого на главной — крупный mark СРАЗУ при заходе */
 .logo-feature {
-  display: flex; justify-content: center; align-items: center;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
   padding: 64px 24px 32px;
   background: var(--bg);
+  gap: 22px;
 }
 .logo-feature-img {
   height: 320px; width: auto; object-fit: contain;
@@ -116,9 +117,47 @@ body { padding-top: 84px; }
   transition: opacity .4s ease, transform .5s cubic-bezier(.2,.7,.2,1);
 }
 .logo-feature-img:hover { opacity: 1; transform: scale(1.03); }
+
+/* Верхний вариант (над hero) — с встроенным дата-бейджем */
+.logo-feature-top {
+  padding: 56px 24px 36px;
+  background: var(--bg);
+  position: relative;
+}
+.logo-feature-top::after {
+  content: ""; position: absolute; left: 24px; right: 24px; bottom: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brand-gold) 30%, var(--brand-gold) 70%, transparent);
+  opacity: .45;
+}
+.logo-feature-dates {
+  display: inline-flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 10px 22px 12px;
+  border: 1px solid var(--brand-gold);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(217,157,71,.10), rgba(217,157,71,.02));
+  margin-top: 6px;
+}
+.logo-feature-dates-num {
+  font-family: var(--font-serif); font-weight: 600;
+  font-size: 22px; letter-spacing: -0.01em; line-height: 1;
+  color: var(--brand-primary);
+}
+.logo-feature-dates-place {
+  font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--text-soft);
+}
+
 @media (max-width: 900px) {
-  .logo-feature { padding: 44px 18px 20px; }
+  .logo-feature { padding: 36px 18px 18px; gap: 16px; }
   .logo-feature-img { height: 220px; }
+  .logo-feature-top { padding: 26px 18px 22px; }
+  .logo-feature-dates { padding: 8px 16px 10px; }
+  .logo-feature-dates-num { font-size: 18px; }
+  .logo-feature-dates-place { font-size: 10px; letter-spacing: 0.18em; }
+}
+@media (max-width: 560px) {
+  .logo-feature-img { height: 180px; }
+  .logo-feature-dates-num { font-size: 17px; }
 }
 @media (max-width: 900px) {
   body { padding-top: 86px; }
@@ -3691,51 +3730,4 @@ footer.split { padding-left: 0; padding-right: 0; }
   }
 }
 
-/* ════════ Hero: «Старт приёма заявок — 22 мая 2026» ════════ */
-.hero-cta-note {
-  display: inline-flex; align-items: center; gap: 10px;
-  margin: 0 0 22px;
-  padding: 10px 16px;
-  background: linear-gradient(180deg, rgba(217,157,71,.12), rgba(217,157,71,.04));
-  border: 1px solid rgba(217,157,71,.45);
-  border-radius: 999px;
-  font-family: var(--font-sans); font-size: 13px; letter-spacing: 0.02em;
-  color: var(--brand-primary);
-}
-.hero-cta-note strong {
-  font-weight: 700;
-  color: var(--brand-primary);
-  white-space: nowrap;
-}
-.hero-cta-note-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--brand-gold);
-  box-shadow: 0 0 0 4px rgba(217,157,71,.18);
-  animation: hero-cta-pulse 2.2s ease-in-out infinite;
-  flex: 0 0 auto;
-}
-@keyframes hero-cta-pulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(217,157,71,.18); }
-  50%      { box-shadow: 0 0 0 8px rgba(217,157,71,.05); }
-}
-@media (max-width: 560px) {
-  .hero-cta-note { font-size: 12px; padding: 9px 14px; }
-}
-
-/* ════════ Nominations: подсветка новой VII «Арктика» ════════ */
-.nom-row-new {
-  background: linear-gradient(90deg, rgba(217,157,71,.06), transparent 60%);
-  border-left: 2px solid var(--brand-gold) !important;
-  padding-left: 22px !important;
-}
-.nom-new-tag {
-  display: inline-block;
-  margin-left: 10px;
-  padding: 3px 9px 4px;
-  font-family: var(--font-sans); font-size: 10px; font-weight: 700;
-  letter-spacing: 0.18em;
-  background: var(--brand-gold); color: var(--brand-primary);
-  border-radius: 4px;
-  vertical-align: middle;
-}
 
