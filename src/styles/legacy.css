@@ -1180,20 +1180,9 @@ body.nav-open { overflow: hidden; }
   .partners-track .partner-abbr { font-size: 20px !important; }
   .partners-track .partner-logo-img { height: 48px !important; max-width: 130px !important; }
   .partners-track .partner-name { font-size: 9px !important; letter-spacing: 0.04em !important; max-width: 110px !important; white-space: normal !important; line-height: 1.15 !important; }
-  /* «Сердце Русского» — родитель тянется под ширину текста (а не картинки),
-     поэтому название влезает в одну строку. */
-  .partners-track .partner-item.is-nowrap {
-    flex: 0 0 auto !important;
-    min-width: max-content !important;
-    width: max-content !important;
-  }
   .partners-track .partner-item.is-nowrap .partner-name {
-    font-size: 8px !important;
-    letter-spacing: 0.02em !important;
     white-space: nowrap !important;
     max-width: none !important;
-    word-break: keep-all !important;
-    overflow: visible !important;
   }
   .partners-marquee::before, .partners-marquee::after { width: 40px !important; }
   .partners-marquee .strip-head { padding: 0 18px !important; }
@@ -3500,6 +3489,8 @@ footer.split { padding: 0; background: var(--bg); color: var(--text); border-top
     flex-direction: column; gap: 8px; align-items: center; text-align: center;
   }
   .site-footer .footer-meta p { text-align: center; margin: 0; }
+  /* «ООО «Сердце Русского»» не разрывается между словами */
+  .site-footer .footer-meta .footer-company { white-space: nowrap; }
 }
 
 /* ════════ Light About — белая секция с декоративными линиями (вместо dark) ════════ */
