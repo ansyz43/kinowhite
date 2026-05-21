@@ -3,14 +3,14 @@ import { useMemo } from "react";
 type Photo = { image: string; year: "2024" | "2025" };
 
 const defaultPhotos: Photo[] = [
-  { image: "/assets/gallery/2025/LX3A5728_resized.jpg", year: "2025" },
-  { image: "/assets/gallery/2024/3K6A1134_resized.jpg", year: "2024" },
-  { image: "/assets/gallery/2025/LX3A5746_resized.jpg", year: "2025" },
-  { image: "/assets/gallery/2024/3K6A2040_resized.jpg", year: "2024" },
-  { image: "/assets/gallery/2025/LX3A6180_resized.jpg", year: "2025" },
-  { image: "/assets/gallery/2024/3K6A2829_resized.jpg", year: "2024" },
-  { image: "/assets/gallery/2025/LX3A6615_resized.jpg", year: "2025" },
-  { image: "/assets/gallery/2024/3K6A3214_resized.jpg", year: "2024" },
+  { image: "/media/gallery/2025/LX3A5728_resized.jpg", year: "2025" },
+  { image: "/media/gallery/2024/3K6A1134_resized.jpg", year: "2024" },
+  { image: "/media/gallery/2025/LX3A5746_resized.jpg", year: "2025" },
+  { image: "/media/gallery/2024/3K6A2040_resized.jpg", year: "2024" },
+  { image: "/media/gallery/2025/LX3A6180_resized.jpg", year: "2025" },
+  { image: "/media/gallery/2024/3K6A2829_resized.jpg", year: "2024" },
+  { image: "/media/gallery/2025/LX3A6615_resized.jpg", year: "2025" },
+  { image: "/media/gallery/2024/3K6A3214_resized.jpg", year: "2024" },
 ];
 
 const SEASON: Record<Photo["year"], string> = {
