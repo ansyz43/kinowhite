@@ -194,19 +194,20 @@ $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: multipart/alternative; boundary=\"{$boundary}\"\r\n";
 $headers .= "X-Mailer: dvkinopremiya-leadform/1.0\r\n";
 
-/* ---- Лог (UTF-8, безусловно) ---- */
+/* ---- Отправка (сначала шлём, потом пишем лог с результатом) ---- */
+$sent = @mail(MAIL_TO, mime_subject($subj), $body, $headers, '-f' . $from);
+$status = $sent ? '✓SENT' : '✗FAIL';
+
+/* ---- Лог: фиксируем результат mail() ---- */
 @file_put_contents(
     LOG_FILE,
-    "[$ts] $ip $name | $email | $phone | $title\r\n",
+    "[$ts] $ip $status → $name | $email | $phone | $title\r\n",
     FILE_APPEND | LOCK_EX
 );
 
-/* ---- Отправка ---- */
-$sent = @mail(MAIL_TO, mime_subject($subj), $body, $headers, '-f' . $from);
-
 if (!$sent) {
     /* mail() недоступна → отвечаем ok, но помечаем что письмо не ушло.
-       Заявка уже в leads.log, оператор увидит её через панель reg.ru. */
+       Заявка уже в leads.log, оператор увидит её. */
     json_out(202, ['ok' => true, 'warn' => 'mail-fallback']);
 }
 
