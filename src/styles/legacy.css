@@ -3156,6 +3156,58 @@ footer.split { padding: 0; background: var(--bg); color: var(--text); border-top
   .album-photos-rail { padding: 4px 24px 16px; grid-auto-columns: minmax(220px, 78vw); }
 }
 
+/* ════════ Archive — новый компактный заголовок сезона ════════ */
+.album-block {
+  padding: 80px 64px 0;
+  border-top: 1px solid var(--border);
+}
+.album-block:first-of-type { border-top: 0; padding-top: 24px; }
+.album-block .album-photos {
+  margin: 48px -64px 0;  /* выводим фотохронику от края до края, отменяя padding родителя */
+}
+@media (max-width: 900px) {
+  .album-block .album-photos { margin: 32px -24px 0; }
+}
+.album-header { margin-bottom: 32px; }
+.album-header-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-sans); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 18px;
+}
+.album-header-eyebrow .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--brand-gold);
+}
+.album-header-main {
+  display: flex; align-items: baseline; gap: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+.album-header-year {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(56px, 7.5vw, 112px); line-height: 0.9;
+  color: var(--brand-primary); margin: 0;
+  letter-spacing: -0.02em;
+}
+.album-header-line {
+  flex: 1; height: 1px; background: var(--brand-gold);
+  align-self: center; margin-bottom: 14px;
+}
+.album-header-meta {
+  display: inline-flex; gap: 10px; align-items: center;
+  font-family: var(--font-sans); font-size: 13px; letter-spacing: 0.06em;
+  color: var(--text-mid); text-transform: uppercase; font-weight: 500;
+}
+.album-header-meta span:nth-child(2) { color: var(--brand-gold); }
+@media (max-width: 900px) {
+  .album-block { padding: 56px 24px; }
+  .album-header-main { flex-wrap: wrap; gap: 14px; }
+  .album-header-line { flex-basis: 100%; margin: 0; }
+  .album-header-meta { font-size: 11px; gap: 8px; }
+}
+
 /* Hover-оверлей на карточке фото — намёк, что фото кликабельно */
 .album-photos-card-hover {
   position: absolute; inset: 0;

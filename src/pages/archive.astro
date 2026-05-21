@@ -15,16 +15,14 @@ const PHOTOS_2025 = [
 
 type Winner = {
   num: string;        // I, II, III, IV, V, VI
-  cat: string;        // короткая категория
+  cat: string;        // короткая категория для тега справа
   title: string;
   author: string;
   year: string;
   region: string;
-  winner?: boolean;   // подсветка Winner
-  img?: string;       // фото-карточка
 };
 
-type Album = { year: string; label: string; place: string; date: string; cover: string; winners: Winner[] };
+type Album = { year: string; label: string; place: string; date: string; winners: Winner[] };
 
 const albums: Album[] = [
   {
@@ -32,14 +30,13 @@ const albums: Album[] = [
     label: "I сезон",
     place: "Москва",
     date: "Декабрь 2024",
-    cover: "/assets/gallery/2024/3K6A1474_resized.jpg",
     winners: [
-      { num: "I",   cat: "Полный метр",       title: "Сто лет тому вперёд", author: "Алексей Нужный", year: "2024", region: "Якутия / Приморье", winner: true, img: "/assets/gallery/2024/3K6A2040_resized.jpg" },
-      { num: "II",  cat: "Режиссура",         title: "Айта",                author: "Степан Бурнашёв", year: "2022", region: "Якутия", winner: true, img: "/assets/gallery/2024/3K6A2829_resized.jpg" },
-      { num: "III", cat: "Сценарий",          title: "Не одна дома",        author: "Радда Новикова", year: "2023", region: "Сахалин", img: "/assets/gallery/2024/3K6A1134_resized.jpg" },
-      { num: "IV",  cat: "Дебют",             title: "Куба, Куба",          author: "Кирилл Кравченко", year: "2024", region: "Приморье", img: "/assets/gallery/2024/3K6A3214_resized.jpg" },
-      { num: "V",   cat: "Короткий метр",     title: "Тойук",               author: "Виктор Аммосов", year: "2023", region: "Якутия", img: "/assets/gallery/2024/3K6A3186_resized.jpg" },
-      { num: "VI",  cat: "За вклад в развитие", title: "Дмитрий Давыденко", author: "Продюсер", year: "Якутск", region: "Якутия", winner: true, img: "/assets/gallery/2024/3K6A1474_resized.jpg" },
+      { num: "I",   cat: "Полный метр",         title: "Сто лет тому вперёд", author: "Алексей Нужный",   year: "2024", region: "Якутия / Приморье" },
+      { num: "II",  cat: "Режиссура",           title: "Айта",                author: "Степан Бурнашёв",  year: "2022", region: "Якутия" },
+      { num: "III", cat: "Сценарий",            title: "Не одна дома",        author: "Радда Новикова",   year: "2023", region: "Сахалин" },
+      { num: "IV",  cat: "Дебют",               title: "Куба, Куба",          author: "Кирилл Кравченко", year: "2024", region: "Приморье" },
+      { num: "V",   cat: "Короткий метр",       title: "Тойук",               author: "Виктор Аммосов",   year: "2023", region: "Якутия" },
+      { num: "VI",  cat: "За вклад",            title: "Дмитрий Давыденко",   author: "Продюсер",         year: "Якутск", region: "Якутия" },
     ],
   },
   {
@@ -47,14 +44,13 @@ const albums: Album[] = [
     label: "II сезон",
     place: "Улан-Удэ",
     date: "Сентябрь 2025",
-    cover: "/assets/gallery/2025/LX3A5728_resized.jpg",
     winners: [
-      { num: "I",   cat: "Полный метр",       title: "Огонь",                      author: "Алексей Нужный", year: "2024", region: "Камчатка", winner: true, img: "/assets/gallery/2025/LX3A5746_resized.jpg" },
-      { num: "II",  cat: "Режиссура",         title: "Чёрная молния возвращается", author: "Дмитрий Давыдов", year: "2024", region: "Якутия", winner: true, img: "/assets/gallery/2025/LX3A6180_resized.jpg" },
-      { num: "III", cat: "Сценарий",          title: "Бэлэх",                       author: "Степан Бурнашёв", year: "2024", region: "Якутия", img: "/assets/gallery/2025/LX3A6615_resized.jpg" },
-      { num: "IV",  cat: "Дебют",             title: "Триозёрск",                   author: "Сергей Кузнецов", year: "2024", region: "Хабаровск", img: "/assets/gallery/2025/LX3A5732_resized.jpg" },
-      { num: "V",   cat: "Короткий метр",     title: "Куда мы едем",                author: "Татьяна Эверстова", year: "2024", region: "Якутия", img: "/assets/gallery/2025/LX3A5740_resized.jpg" },
-      { num: "VI",  cat: "За вклад",          title: "Алёна Шумакова",              author: "Программный директор", year: "Бурятия", region: "Бурятия", winner: true, img: "/assets/gallery/2025/LX3A5765_resized.jpg" },
+      { num: "I",   cat: "Полный метр",         title: "Огонь",                      author: "Алексей Нужный",      year: "2024", region: "Камчатка" },
+      { num: "II",  cat: "Режиссура",           title: "Чёрная молния возвращается", author: "Дмитрий Давыдов",     year: "2024", region: "Якутия" },
+      { num: "III", cat: "Сценарий",            title: "Бэлэх",                      author: "Степан Бурнашёв",     year: "2024", region: "Якутия" },
+      { num: "IV",  cat: "Дебют",               title: "Триозёрск",                  author: "Сергей Кузнецов",     year: "2024", region: "Хабаровск" },
+      { num: "V",   cat: "Короткий метр",       title: "Куда мы едем",               author: "Татьяна Эверстова",   year: "2024", region: "Якутия" },
+      { num: "VI",  cat: "За вклад",            title: "Алёна Шумакова",             author: "Программный директор", year: "Бурятия", region: "Бурятия" },
     ],
   },
 ];
@@ -77,37 +73,33 @@ const albums: Album[] = [
   ))}
 </nav>
 
-{albums.map((album, ai) => (
-  <article class={"album reveal" + (ai % 2 ? " album-flip" : "")} id={"year-" + album.year}>
+{albums.map((album) => (
+  <article class="album-block reveal" id={"year-" + album.year}>
 
-    <!-- Cover hero -->
-    <header class="album-cover">
-      <img src={album.cover} alt={album.label} class="album-cover-img" />
-      <div class="album-cover-overlay">
-        <div class="album-cover-eyebrow">
-          <span class="dot"></span>
-          <span>{album.label} · {album.place}</span>
+    <!-- Заголовок сезона — текстовый, с горизонтальной золотой линией -->
+    <header class="album-header">
+      <div class="album-header-eyebrow"><span class="dot"></span><span>{album.label} · {album.place}</span></div>
+      <div class="album-header-main">
+        <h2 class="album-header-year">{album.year}</h2>
+        <span class="album-header-line"></span>
+        <div class="album-header-meta">
+          <span>{album.date}</span>
+          <span>·</span>
+          <span>{album.winners.length} лауреатов</span>
         </div>
-        <h2 class="album-cover-year">{album.year}</h2>
-        <div class="album-cover-date">{album.date}</div>
       </div>
     </header>
 
-    <!-- Winners — magazine alternating layout -->
-    <div class="album-winners">
-      {album.winners.map((w, i) => (
-        <article class={"album-winner" + (i % 2 ? " flip" : "") + (w.winner ? " is-winner" : "")}>
-          <div class="album-winner-photo">
-            {w.img && <img src={w.img} alt={w.title} loading="lazy" />}
-            <div class="album-winner-num">{w.num}</div>
-            {w.winner && <div class="album-winner-badge">Winner</div>}
+    <!-- Победители — список в стиле наших номинаций (с линиями) -->
+    <div class="nom-list reveal-stagger">
+      {album.winners.map((w) => (
+        <article class="nom-row">
+          <div class="nom-num">{w.num}</div>
+          <div class="nom-body">
+            <h3>{w.title}</h3>
+            <p>{w.author} · {w.year} · регион — {w.region}</p>
           </div>
-          <div class="album-winner-body">
-            <div class="album-winner-cat">{w.cat}</div>
-            <h3 class="album-winner-title">{w.title}</h3>
-            <div class="album-winner-author">{w.author} · {w.year}</div>
-            <div class="album-winner-region">Регион — {w.region}</div>
-          </div>
+          <div class="nom-meta">{w.cat}</div>
         </article>
       ))}
     </div>
