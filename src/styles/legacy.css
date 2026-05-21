@@ -490,7 +490,7 @@ body { padding-top: 84px; }
   letter-spacing: 0.06em; cursor: pointer;
   transition: color .35s cubic-bezier(.2,.7,.2,1), border-color .35s cubic-bezier(.2,.7,.2,1);
 }
-.submit-section .link-button:hover { color: #ffffff; border-color: #ffffff; }
+.submit-section .link-button:hover { color: #ffffff; border-color: #ffffff; background: none; }
 .submit-section .link-button::before,
 .submit-section .link-button::after { display: none !important; }
 
@@ -1096,8 +1096,8 @@ body.modal-open { overflow: hidden; }
 .submit-option button:hover, .link-button:hover { background: var(--brand-gold); color: var(--brand-primary); }
 .link-button { background: none; color: var(--brand-primary); border-bottom: 1px solid var(--brand-gold); padding: 0 0 6px; margin: 0; border-radius: 0; }
 /* Внутри тёмного submit-section — белый текст */
-.submit-section .link-button { color: var(--text-inv); border-bottom-color: var(--brand-gold); }
-.submit-section .link-button:hover { color: var(--brand-gold); }
+.submit-section .link-button { color: var(--text-inv); border-bottom-color: var(--brand-gold); background: none; }
+.submit-section .link-button:hover { color: var(--brand-gold); background: none; }
 .contact-grid {
   display: grid; grid-template-columns: 2fr 1fr 1.2fr; gap: 24px; margin-bottom: 32px;
   max-width: 1200px; margin-left: auto; margin-right: auto;
