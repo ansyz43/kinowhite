@@ -1173,7 +1173,8 @@ body.nav-open { overflow: hidden; }
   .hero-text-col { padding-left: 18px; padding-right: 18px; }
   .hero-text-col .hero-title { font-size: clamp(36px, 11vw, 64px) !important; margin-bottom: 20px; }
   /* Карусели на мобиле — быстрее */
-  .partners-track { animation-duration: 22s !important; gap: 32px !important; }
+  .partners-track { animation-duration: 22s !important; gap: 0 !important; }
+  .partners-track .partner-item { margin-right: 32px !important; }
   .photo-marquee-track { animation-duration: 30s !important; }
   /* Партнёры на мобиле — компактнее, чтобы помещалось несколько одновременно */
   .partners-track .partner-item { padding: 0 4px !important; gap: 4px !important; }
@@ -1748,10 +1749,13 @@ footer.split { padding: 0; background: var(--bg); color: var(--text); border-top
 }
 .partners-marquee .strip-head .line { flex: 1; height: 1px; background: var(--brand-primary); }
 .partners-track {
-  display: flex; gap: 96px; align-items: center;
+  display: flex; gap: 0; align-items: center;
   width: max-content;
   animation: partners-marquee 38s linear infinite;
 }
+/* gap делаем через margin-right на каждом item — чтобы и последний
+   имел отступ. Без этого после клонирования получается видимая «дырка». */
+.partners-track .partner-item { margin-right: 96px; }
 /* партнёры крутятся всегда — без паузы */
 
 /* ════════ Nominations v2 — list-формат с большими римскими цифрами (EFA-style) ════════ */
