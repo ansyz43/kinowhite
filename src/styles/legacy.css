@@ -1180,7 +1180,13 @@ body.nav-open { overflow: hidden; }
   .partners-track .partner-abbr { font-size: 20px !important; }
   .partners-track .partner-logo-img { height: 48px !important; max-width: 130px !important; }
   .partners-track .partner-name { font-size: 9px !important; letter-spacing: 0.04em !important; max-width: 110px !important; white-space: normal !important; line-height: 1.15 !important; }
-  .partners-track .partner-item.is-nowrap .partner-name { white-space: nowrap !important; max-width: none !important; }
+  .partners-track .partner-item.is-nowrap { flex: 0 0 auto !important; }
+  .partners-track .partner-item.is-nowrap .partner-name {
+    white-space: nowrap !important;
+    max-width: none !important;
+    word-break: keep-all !important;
+    overflow: visible !important;
+  }
   .partners-marquee::before, .partners-marquee::after { width: 40px !important; }
   .partners-marquee .strip-head { padding: 0 18px !important; }
   .partners-marquee .strip-head h2 { font-size: 22px !important; }
