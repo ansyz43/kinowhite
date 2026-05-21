@@ -1512,6 +1512,12 @@ footer.split { padding: 0; background: var(--bg); color: var(--text); border-top
   font-family: var(--font-serif); font-size: 22px; color: var(--brand-primary);
   font-weight: 500; margin: 0; line-height: 1.1; letter-spacing: -0.01em;
 }
+/* На десктопе убираем eyebrow на главной — дублирует hero-meta-row.
+   На мобиле eyebrow остаётся, т.к. большой лого-блок сверху сам уже несёт даты,
+   а кому-то всё-таки хочется компактный текстовый дубль рядом с заголовком. */
+@media (min-width: 901px) {
+  .home-hero .hero-eyebrow { display: none; }
+}
 /* Ключевые даты приёма заявок — выделяем визуально */
 .hero-meta-row .is-key dt {
   color: var(--brand-primary); font-weight: 700;
