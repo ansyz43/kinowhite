@@ -1539,7 +1539,7 @@ footer.split { padding: 0; background: var(--bg); color: var(--text); border-top
   .hero-meta-row .is-key dd { font-size: 19px; }
 }
 .hero-text-col .hero-eyebrow { grid-column: auto; }
-.hero-text-col .hero-title { grid-column: auto; font-size: clamp(56px, 7.4vw, 124px); margin-bottom: 32px; }
+.hero-text-col .hero-title { grid-column: auto; font-size: clamp(38px, 4.6vw, 88px); margin-bottom: 32px; line-height: 1.02; hyphens: none; }
 .hero-text-col .hero-sub { grid-column: auto; max-width: 44ch; margin-bottom: 36px; }
 .hero-text-col .hero-actions { grid-column: auto; }
 .hero-collage { display: none; } /* старый коллаж удалён */
